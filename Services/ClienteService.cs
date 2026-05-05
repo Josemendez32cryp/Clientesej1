@@ -45,7 +45,11 @@
                 //Si la operación de la izquierda del ?? por algún razón es NULL
                 //entonces devuelve lo que está después del ??
                 //en este caso devuelve una lista vacía (pero no NULL para eviatar errores)
+
+
                 return JsonSerializer.Deserialize<List<Cliente>>(json) ?? new List<Cliente>();
+
+
             }
             catch
             {

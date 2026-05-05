@@ -1,6 +1,39 @@
-﻿namespace Clientesej1.Components.Pages
-{
-    public class VehiculosListar
+﻿@page "/vehiculos-listar"
+
+@using Clientesej1.Models
+@using Clientesej1.Service
+@inject VehiculosService VehiculosService
+@rendermode InteractiveServer
+
+<h3>Listado de Vehículos</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in lista)
+        {
+            <tr>
+                <td>@v.Placa</td>
+                <td>@v.Marca</td>
+                <td>@v.Modelo</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/vehiculos-ingreso" class="btn btn-primary">Nuevo Vehículo</a>
+
+@code {
+    private List<Vehiculo> lista = new();
+
+    protected override void OnInitialized()
     {
+        lista = VehiculosService.Leer();
     }
 }
